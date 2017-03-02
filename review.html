@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <script>
+            var post = function (data) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "http://localhost:5000/review", true);
+                xmlhttp.send(data);
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(JSON.parse(this.response));
+                    }
+                    else if (this.readyState == 4 && this.status == 404) {
+                        console.log("Bad Request");
+                    }
+                };
+            }
+            var form;
+            var data = new FormData();
+                data.append('username', 'hello');
+                post(data);
+        </script>
+    </body>
+</html>
